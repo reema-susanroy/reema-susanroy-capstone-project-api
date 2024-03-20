@@ -7,6 +7,7 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('service_name').notNullable();
         table.string('service_description').notNullable();
+        table.string('service_image');
         table.timestamp('created_at').defaultTo(knex.fn.now())
       });
 };
