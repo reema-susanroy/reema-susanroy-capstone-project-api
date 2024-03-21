@@ -10,11 +10,9 @@ const getServices = async (_req, res) => {
 };
 
 const getOneService = async (req, res) => {
-    console.log("controller");
     try {
         const servicesFound = await knex("services")
                 .where({ id: req.params.id });
-        console.log(servicesFound)
 
         if(servicesFound.length === 0){
             return res.status(404).json({message: `Service with ID ${req.params.id} not found` });
