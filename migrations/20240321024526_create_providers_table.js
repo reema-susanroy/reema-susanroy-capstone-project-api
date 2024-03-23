@@ -18,6 +18,7 @@ exports.up = function (knex) {
             table.varchar('contact_phone',200).notNullable();
             table.varchar('contact_email',200).notNullable();
             table.string('rating');
+            table.string('Availability');
             table.timestamp('created_at').defaultTo(knex.fn.now())
     });
 

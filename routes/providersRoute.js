@@ -11,4 +11,8 @@ router
     .route("/:serviceId")
     .get(providersController.getProvidersForService);
 
+router
+    .route("/:id/reviews")
+    .get(providersController.getReviews);
+
 module.exports = router;

@@ -15,7 +15,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (123) 456-7890', 
         contact_email: 'john@example.com',
-        rating: "4.5"
+        rating: "4.5",
+        availability : "yes"
     },
     { 
         id:2,
@@ -26,7 +27,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (234) 567-8901', 
         contact_email: 'jane@example.com',
-        rating: "4.2"
+        rating: "4.2",
+        availability : "yes"
     },
     { 
         id:3,
@@ -37,7 +39,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (345) 678-9012', 
         contact_email: 'michael@example.com',
-        rating: "4.8"
+        rating: "4.8",
+        availability : "yes"
     },
     { 
         id:4,
@@ -48,7 +51,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (456) 789-0123', 
         contact_email: 'emily@example.com',
-        rating: "4.6"
+        rating: "4.6",
+        availability : "yes"
     },
     { 
         id:5,
@@ -59,7 +63,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (567) 890-1234', 
         contact_email: 'william@example.com',
-        rating: "4.3"
+        rating: "4.3",
+        availability : "yes"
     },
     { 
         id:6,
@@ -70,7 +75,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (678) 901-2345', 
         contact_email: 'emma@example.com',
-        rating: "4.9"
+        rating: "4.9",
+        availability : "yes"
     },
     { 
         id:7,
@@ -81,7 +87,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (789) 012-3456', 
         contact_email: 'james@example.com',
-        rating: "4.4"
+        rating: "4.4",
+        availability : "yes"
     },
     { 
         id:8,
@@ -92,7 +99,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (890) 123-4567', 
         contact_email: 'olivia@example.com',
-        rating: "4.1"
+        rating: "4.1",
+        availability : "yes"
     },
     { 
         id:9,
@@ -103,7 +111,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (901) 234-5678', 
         contact_email: 'benjamin@example.com',
-        rating: "4.7"
+        rating: "4.7",
+        availability : "yes"
     },
     { 
         id:10,
@@ -114,7 +123,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (012) 345-6789', 
         contact_email: 'sophia@example.com',
-        rating: "4.5"
+        rating: "4.5",
+        availability : "yes"
     },
     { 
         id:11,
@@ -125,7 +135,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (123) 456-7890', 
         contact_email: 'liam@example.com',
-        rating: "4.2"
+        rating: "4.2",
+        availability : "yes"
     },
     { 
         id:12,
@@ -136,7 +147,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (234) 567-8901', 
         contact_email: 'isabella@example.com',
-        rating: "4.8"
+        rating: "4.8",
+        availability : "yes"
     },
     { 
         id:13,
@@ -147,7 +159,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (345) 678-9012', 
         contact_email: 'mason@example.com',
-        rating: "4.6"
+        rating: "4.6",
+        availability : "yes"
     },
     { 
         id:14,
@@ -158,7 +171,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (456) 789-0123', 
         contact_email: 'ava@example.com',
-        rating: "4.3"
+        rating: "4.3",
+        availability : "yes"
     },
     { 
         id:15,
@@ -169,7 +183,8 @@ exports.seed = async function(knex) {
         country: 'USA', 
         contact_phone: '+1 (567) 890-1234', 
         contact_email: 'lucas@example.com',
-        rating: "4.9"
+        rating: "4.9",
+        availability : "yes"
     }
 ]
 );
