@@ -15,4 +15,11 @@ router
     .route("/:id/reviews")
     .get(providersController.getReviews);
 
+router
+    .route("/booking/:id/availability")
+    .get(providersController.getAvailability);
+
+router
+    .route("/:id/booking/confirm")
+    .post(providersController.updateBooking)
 module.exports = router;

@@ -30,12 +30,42 @@ const getReviews= async (req,res)=>{
             res.json(reviews);
     }
     catch(error){
-        res.status(500).send("Unable to fetch revies of thee provider");
+        res.status(500).send("Unable to fetch reviwes of the provider");
     }
 }
 
+
+const getAvailability = async (req,res)=>{
+    try{
+        const availability = await knex("availability")
+            .join("providers", "providers.id", "availability.provider_id")
+            .where({"provider_id" : req.params.id});
+
+            res.json(availability);
+    }
+    catch(error){
+        res.status(500).send("Unable to fetch reviews of the provider");
+    }
+}
+
+const updateBooking = async(req,res)=>{
+    console.log("Booking")
+    try{
+        const updation = await knex ("booking")
+            // .where({"id": req.params.id})
+            .insert(req.body);
+           
+     res.status(200).json(updation[0]);
+
+    } catch (error) {
+        console.error('Error updating booking:', error);
+        res.status(500).json({ message: `Unable to update booking table` });
+      }
+}
 module.exports = {
     getProviders,
     getProvidersForService,
-    getReviews
+    getReviews,
+    getAvailability,
+    updateBooking
 }
