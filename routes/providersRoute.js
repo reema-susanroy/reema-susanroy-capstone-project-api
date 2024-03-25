@@ -21,5 +21,10 @@ router
 
 router
     .route("/:id/booking/confirm")
-    .post(providersController.updateBooking)
+    .post(providersController.updateBooking);
+
+router  
+    .route("/:id/favorite")
+    .put(providersController.like);
+
 module.exports = router;

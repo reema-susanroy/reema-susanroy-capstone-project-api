@@ -7,4 +7,8 @@ router
     .post(userController.userLogin);
 
 
+    router
+    .route("/register")
+    .post(userController.userRegister);
+
 module.exports = router;
