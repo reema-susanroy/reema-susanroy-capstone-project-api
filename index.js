@@ -7,6 +7,7 @@ const { CORS_ORIGIN } = process.env;
 
 const servicesRoute = require('./routes/servicesRoute');
 const providersRoute = require('./routes/providersRoute');
+const userController = require('./routes/userRoute');
 
 app.use(cors({origin:CORS_ORIGIN}));
 app.use(express.json());
@@ -14,6 +15,8 @@ app.use(express.static('public'));
 
 app.use('/api/services', servicesRoute);
 app.use('/api/providers', providersRoute);
+app.use('/api',userController);
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
