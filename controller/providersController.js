@@ -63,7 +63,6 @@ const updateBooking = async(req,res)=>{
 }
 
 const like =async(req,res) =>{
-    console.log("like")
     try{
         const updation = await knex ("providers")
             .where({"id": req.params.id})
@@ -75,12 +74,27 @@ const like =async(req,res) =>{
         console.error('Error updating booking:', error);
         res.status(500).json({ message: `Unable to update booking table` });
     }
+};
+
+const getLikes = async(req,res)=>{
+    try{
+        const getData=await knex ("providers")
+        .select("*")
+        .where ("isFavorite", 1 );
+        console.log(getData);
+        res.status(200).json(getData);
+
+    }catch(error){
+    console.log("Unable to fetch list");
+    }
 }
+
 module.exports = {
     getProviders,
     getProvidersForService,
     getReviews,
     getAvailability,
     updateBooking,
-    like
+    like,
+    getLikes
 }

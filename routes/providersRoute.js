@@ -27,4 +27,9 @@ router
     .route("/:id/favorite")
     .put(providersController.like);
 
+router
+    .route("/users/favorite")
+    .get(providersController.getLikes);
+
+    
 module.exports = router;

@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 app.use('/api/services', servicesRoute);
 app.use('/api/providers', providersRoute);
-app.use('/api',userController);
+app.use('/api/users',userController);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
