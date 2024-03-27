@@ -41,62 +41,63 @@ const getBooking = async (req, res) => {
         const booking = await knex("booking")
             .join("services", "services.id", "booking.service_id")
             .join("providers", "providers.id", "booking.provider_id")
+            .select("booking.id","booking.booked_on","services.service_name","providers.provider_name")
             .where({"user_id" : req.params.id});
-        
-        res.json(booking);
+            res.json(booking);
     } catch (error) {
         res.status(500).send("Unable to retrieve details of the provider");
     }
 };
 
-// const getFavoriteStatus =async ()=>{
-//     try {
-//         const favorites = await knex("favorite")
-//             .join("services", "services.id", "favorite.service_id")
-//             // .join("providers", "providers.id", "favorite.provider_id")
-//             .where({"user_id" : req.params.userId});
-//         if(favorites.length===0){
-//             console.log("here")
-//             return res.status(404).json({message: "No Favorites"});
-//         }
-//         res.json(favorites);
-//     } catch (error) {
-//         res.status(500).send("Unable to retrieve details of the provider");
-//     }
-// }
+const getUserDetails = async (req, res) =>{
+    try{
+        const user=await knex("users")
+            .select("users.*")
+            .where({"id" : req.params.id});
 
-// const like =async(req,res) =>{
-//     console.log("like")
-//     try{
-//         const checkData= await knex("favorite").where({"provider_id": req.params.id});
+        res.status(200).json(user);
+    }catch(error){
+        res.status(500).send("Unable to retrieve details of the user");
+    }
 
-//         if(checkData.length===0){
-//             console.log("update?")
-//             const updation = await knex ("favorite")
-//             // .where({"provider_id": req.params.id})
-//             .insert(req.body);
-            
+}
 
-//             return res.status(200).json(req.body);
-//         }
-//         else{
-//             console.log("insert?")
-            
-//             const updation = await knex ("favorite")
-//             .where({"provider_id": req.params.id})
-//             .update(req.body);
-//             return res.status(200).json(req.body);
-//         }                 
-//     //  res.status(200).json(updation[0]);
-//     } catch (error) {
-//         console.error('Error updating booking:', error);
-//         res.status(500).json({ message: `Unable to update booking table` });
-//     }
-// }
+const postUserDetails = async (req, res) =>{
+    try{
+        const user=await knex("users")
+            .where({"id" : req.params.id})
+            .update(req.body);
+
+        res.status(200).json(user);
+    }catch(error){
+        res.status(500).send("Unable to update details of the user");
+    }
+
+}
+
+const deleteBooking = async (req,res) =>{
+    console.log("called delete")
+    try{
+        console.log(req.params.id);
+        const deleteItem = await knex ("booking")
+            .where({"id" : req.params.id})
+            .delete();
+
+            if (deleteItem === 0) {
+                return res.status(404).json({
+                  message: `Booking not found`,
+                });
+              }
+        res.sendStatus(204);
+    }catch(error){
+        res.status(500).send("Unable to delete the booking");
+    }
+}
 module.exports = {
     userLogin,
     userRegister,
     getBooking,
-    // getFavoriteStatus,
-    // like
+    getUserDetails,
+    postUserDetails,
+    deleteBooking
 }

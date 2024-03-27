@@ -8,6 +8,10 @@ router
     .get(providersController.getProviders);
 
 router
+    .route("/provider/:id")
+    .get(providersController.getProviderDetails);
+
+router
     .route("/:serviceId")
     .get(providersController.getProvidersForService);
 

@@ -9,12 +9,25 @@ const getProviders = async (_req, res) => {
     }
 };
 
+const getProviderDetails = async (req, res) => {
+    try {
+        const providerData = await knex("providers")
+            .join("services","services.id","providers.service_id")
+            .where({"providers.id" : req.params.id});
+        console.log(providerData);
+        res.json(providerData);
+    } catch (error) {
+        res.status(500).send("Unable to retrieve provider data");
+    }
+};
+
 const getProvidersForService = async (req, res) => {
     try {
         const providers = await knex("providers")
+            .select("providers.*")
             .join("services", "services.id", "providers.service_id")
             .where({"service_id" : req.params.serviceId});
-        
+        // console.log(providers)
         res.json(providers);
     } catch (error) {
         res.status(500).send("Unable to retrieve details of the provider");
@@ -50,6 +63,7 @@ const getAvailability = async (req,res)=>{
 
 const updateBooking = async(req,res)=>{
     try{
+
         const updation = await knex ("booking")
             // .where({"id": req.params.id})
             .insert(req.body);
@@ -79,9 +93,10 @@ const like =async(req,res) =>{
 const getLikes = async(req,res)=>{
     try{
         const getData=await knex ("providers")
+        // .join("services", "service.id","providers.service_id")
         .select("*")
         .where ("isFavorite", 1 );
-        console.log(getData);
+        // console.log(getData);
         res.status(200).json(getData);
 
     }catch(error){
@@ -91,6 +106,7 @@ const getLikes = async(req,res)=>{
 
 module.exports = {
     getProviders,
+    getProviderDetails,
     getProvidersForService,
     getReviews,
     getAvailability,

@@ -13,14 +13,13 @@ router
 
 router
     .route("/manage-booking/:id")
-    .get(userController.getBooking);
+    .get(userController.getBooking)
+    .delete(userController.deleteBooking);
 
-// router
-//     .route("/:userId/providers/:id/favorite")
-//     .get(userController.getFavoriteStatus);
+router
+    .route("/:id")
+    .get(userController.getUserDetails)
+    .post(userController.postUserDetails);
     
-// router  
-//     .route("/:id/favorite")
-//     .put(userController.like);
 
 module.exports = router;
