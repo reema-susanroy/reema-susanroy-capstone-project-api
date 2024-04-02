@@ -15,7 +15,9 @@ exports.up = function(knex) {
         table.integer('service_id').notNullable();
         table.varchar('issue_description',500).notNullable();
         // table.varchar('address',500).notNullable();
-        table.date('booked_on').notNullable,
+        table.date('booked_on').notNullable;
+        table.varchar('status',225).defaultTo('Pending');
+        table.varchar('image',500);
         table.timestamp('created_at').defaultTo(knex.fn.now())
         });  
 };

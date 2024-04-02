@@ -19,6 +19,12 @@ exports.up = function (knex) {
             table.varchar('contact_email',200).notNullable();
             table.string('rating');
             table.string('Availability');
+            table.varchar('provider_image',500);
+            table.json('pricing');
+            table.varchar('experience',255);
+            table.tinyint('isFavorite');
+            table.double('latitude');
+            table.double('longitude');
             table.timestamp('created_at').defaultTo(knex.fn.now())
     });
 

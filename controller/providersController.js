@@ -1,5 +1,21 @@
 const knex = require("knex")(require("../knexfile"));
 
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, 'public/uploads/');
+    },
+    filename: (req, file, callback) => {
+        videoId = crypto.randomUUID();
+        const extPath = path.extname(file.originalname);
+        const newName = `${videoId}${extPath}`
+        callback(null, newName);
+    },
+});
+const upload = multer({ storage: storage });
+
 const getProviders = async (_req, res) => {
     try {
         const providersList = await knex("providers");
@@ -12,8 +28,8 @@ const getProviders = async (_req, res) => {
 const getProviderDetails = async (req, res) => {
     try {
         const providerData = await knex("providers")
-            .join("services","services.id","providers.service_id")
-            .where({"providers.id" : req.params.id});
+            .join("services", "services.id", "providers.service_id")
+            .where({ "providers.id": req.params.id });
         console.log(providerData);
         res.json(providerData);
     } catch (error) {
@@ -26,7 +42,7 @@ const getProvidersForService = async (req, res) => {
         const providers = await knex("providers")
             .select("providers.*")
             .join("services", "services.id", "providers.service_id")
-            .where({"service_id" : req.params.serviceId});
+            .where({ "service_id": req.params.serviceId });
         // console.log(providers)
         res.json(providers);
     } catch (error) {
@@ -34,55 +50,67 @@ const getProvidersForService = async (req, res) => {
     }
 };
 
-const getReviews= async (req,res)=>{
-    try{
+const getReviews = async (req, res) => {
+    try {
         const reviews = await knex("reviews")
             .join("providers", "providers.id", "reviews.provider_id")
-            .where({"provider_id" : req.params.id});
-            
-            res.json(reviews);
+            .where({ "provider_id": req.params.id });
+
+        res.json(reviews);
     }
-    catch(error){
+    catch (error) {
         res.status(500).send("Unable to fetch reviwes of the provider");
     }
 }
 
 
-const getAvailability = async (req,res)=>{
-    try{
+const getAvailability = async (req, res) => {
+    try {
         const availability = await knex("availability")
             .join("providers", "providers.id", "availability.provider_id")
-            .where({"provider_id" : req.params.id});
+            .where({ "provider_id": req.params.id });
 
-            res.json(availability);
+        res.json(availability);
     }
-    catch(error){
+    catch (error) {
         res.status(500).send("Unable to fetch reviews of the provider");
     }
 }
 
-const updateBooking = async(req,res)=>{
-    try{
+const updateBooking = async (req, res) => {
+    upload.single('image')(req, res, async (err) => {
+        if (err) {
+            console.error('Error uploading file:', err);
+            return res.status(400).json({ message: 'Error uploading file' });
+        }
 
-        const updation = await knex ("booking")
-            // .where({"id": req.params.id})
-            .insert(req.body);
-           
-     res.status(200).json(updation[0]);
+        const imagePath = req.file ? req.file.path : '';
+        const match = imagePath.match(/\\uploads\\(.+)/);
+        const extractedPath = match ? match[0] : null;
 
-    } catch (error) {
-        console.error('Error updating booking:', error);
-        res.status(500).json({ message: `Unable to update booking table` });
-      }
+        try {
+
+            const updation = await knex("booking")
+                // .where({"id": req.params.id})
+                .insert({ ...req.body, image: extractedPath });
+
+            res.status(200).json(updation[0]);
+
+        } catch (error) {
+            console.error('Error updating booking:', error);
+            res.status(500).json({ message: `Unable to update booking table` });
+        }
+    })
+
 }
 
-const like =async(req,res) =>{
-    try{
-        const updation = await knex ("providers")
-            .where({"id": req.params.id})
+const like = async (req, res) => {
+    try {
+        const updation = await knex("providers")
+            .where({ "id": req.params.id })
             .update(req.body);
-           
-     res.status(200).json(updation[0]);
+
+        res.status(200).json(updation[0]);
 
     } catch (error) {
         console.error('Error updating booking:', error);
@@ -90,19 +118,38 @@ const like =async(req,res) =>{
     }
 };
 
-const getLikes = async(req,res)=>{
-    try{
-        const getData=await knex ("providers")
-        // .join("services", "service.id","providers.service_id")
-        .select("*")
-        .where ("isFavorite", 1 );
+const getLikes = async (req, res) => {
+    try {
+        const getData = await knex("providers")
+            // .join("services", "service.id","providers.service_id")
+            .select("*")
+            .where("isFavorite", 1);
         // console.log(getData);
         res.status(200).json(getData);
 
-    }catch(error){
-    console.log("Unable to fetch list");
+    } catch (error) {
+        console.log("Unable to fetch list");
     }
 }
+
+// const providerLogin = async (req, res) => {
+//     const { provider_name, contact_email } = req.body;
+//     console.log("hi")
+//     try {
+//         const checkUser = await knex("providers")
+//             .where({ provider_name, contact_email })
+//             .select("id")
+//             .first();
+
+//         if (!checkUser) {
+//             return res.status(404).json({ error: `Provider not found.` });
+//         }
+//         res.status(200).json({ message: 'Login Successful', provider: checkUser });
+
+//     } catch (error) {
+//         res.status(500).json({ error: "Internal server error" });
+//     }
+// };
 
 module.exports = {
     getProviders,
@@ -112,5 +159,6 @@ module.exports = {
     getAvailability,
     updateBooking,
     like,
-    getLikes
+    getLikes,
+    // providerLogin
 }

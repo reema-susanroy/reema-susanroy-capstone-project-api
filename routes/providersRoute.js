@@ -35,5 +35,8 @@ router
     .route("/users/favorite")
     .get(providersController.getLikes);
 
-    
+// router
+//     .route("/login")
+//     .post(providersController.providerLogin);
+
 module.exports = router;

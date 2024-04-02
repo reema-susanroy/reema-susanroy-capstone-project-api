@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const PORT= process.env.PORT;
 const { CORS_ORIGIN } = process.env;
+app.use(express.static("public"));
 
 const servicesRoute = require('./routes/servicesRoute');
 const providersRoute = require('./routes/providersRoute');

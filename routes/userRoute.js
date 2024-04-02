@@ -21,5 +21,8 @@ router
     .get(userController.getUserDetails)
     .post(userController.postUserDetails);
     
+router
+    .route("/manage-booking/:id/:bookingId")
+    .get(userController.viewBooking);
 
 module.exports = router;

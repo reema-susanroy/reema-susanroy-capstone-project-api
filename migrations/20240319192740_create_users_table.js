@@ -11,6 +11,7 @@ exports.up = function(knex) {
         table.string('country').notNullable();
         table.string('contact_phone').notNullable();
         table.string('contact_email').notNullable();
+        table.varchar('password',500);
         table.timestamp('created_at').defaultTo(knex.fn.now())
         //table.timestamp('updated_at').defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'))
       });

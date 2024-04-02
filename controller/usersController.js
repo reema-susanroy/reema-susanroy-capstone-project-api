@@ -41,7 +41,7 @@ const getBooking = async (req, res) => {
         const booking = await knex("booking")
             .join("services", "services.id", "booking.service_id")
             .join("providers", "providers.id", "booking.provider_id")
-            .select("booking.id","booking.booked_on","services.service_name","providers.provider_name")
+            .select("booking.id","booking.booked_on","booking.status","services.service_name","providers.provider_name")
             .where({"user_id" : req.params.id});
             res.json(booking);
     } catch (error) {
@@ -93,11 +93,29 @@ const deleteBooking = async (req,res) =>{
         res.status(500).send("Unable to delete the booking");
     }
 }
+
+const viewBooking = async (req, res) => {
+    try {
+        console.log("viewbooking")
+        const booking = await knex("booking")
+            // .join("services", "services.id", "booking.service_id")
+            // .join("providers", "providers.id", "booking.provider_id")
+            // .select("booking.id","booking.booked_on","booking.status","services.service_name","providers.provider_name")
+            .where({"booking.id" : req.params.bookingId});
+
+            res.json(booking);
+    } catch (error) {
+        res.status(500).send("Unable to retrieve details of booking");
+    }
+};
+
+
 module.exports = {
     userLogin,
     userRegister,
     getBooking,
     getUserDetails,
     postUserDetails,
-    deleteBooking
+    deleteBooking,
+    viewBooking
 }
