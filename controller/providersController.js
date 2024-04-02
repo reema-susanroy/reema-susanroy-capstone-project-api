@@ -30,7 +30,6 @@ const getProviderDetails = async (req, res) => {
         const providerData = await knex("providers")
             .join("services", "services.id", "providers.service_id")
             .where({ "providers.id": req.params.id });
-        console.log(providerData);
         res.json(providerData);
     } catch (error) {
         res.status(500).send("Unable to retrieve provider data");
@@ -43,7 +42,6 @@ const getProvidersForService = async (req, res) => {
             .select("providers.*")
             .join("services", "services.id", "providers.service_id")
             .where({ "service_id": req.params.serviceId });
-        // console.log(providers)
         res.json(providers);
     } catch (error) {
         res.status(500).send("Unable to retrieve details of the provider");
@@ -91,7 +89,6 @@ const updateBooking = async (req, res) => {
         try {
 
             const updation = await knex("booking")
-                // .where({"id": req.params.id})
                 .insert({ ...req.body, image: extractedPath });
 
             res.status(200).json(updation[0]);
@@ -124,32 +121,12 @@ const getLikes = async (req, res) => {
             // .join("services", "service.id","providers.service_id")
             .select("*")
             .where("isFavorite", 1);
-        // console.log(getData);
         res.status(200).json(getData);
 
     } catch (error) {
         console.log("Unable to fetch list");
     }
 }
-
-// const providerLogin = async (req, res) => {
-//     const { provider_name, contact_email } = req.body;
-//     console.log("hi")
-//     try {
-//         const checkUser = await knex("providers")
-//             .where({ provider_name, contact_email })
-//             .select("id")
-//             .first();
-
-//         if (!checkUser) {
-//             return res.status(404).json({ error: `Provider not found.` });
-//         }
-//         res.status(200).json({ message: 'Login Successful', provider: checkUser });
-
-//     } catch (error) {
-//         res.status(500).json({ error: "Internal server error" });
-//     }
-// };
 
 module.exports = {
     getProviders,
@@ -159,6 +136,5 @@ module.exports = {
     getAvailability,
     updateBooking,
     like,
-    getLikes,
-    // providerLogin
+    getLikes
 }

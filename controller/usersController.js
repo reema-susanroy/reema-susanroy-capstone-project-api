@@ -26,7 +26,6 @@ const userRegister = async (req, res) => {
         if(checkUser.length===0){
             const [id] = await knex("users")
                 .insert(req.body);
-            console.log(id)
                 return res.status(200).json({message : 'Registered Successful',id});
         }
         res.status(404).json({message : 'User already registered' });
@@ -59,7 +58,6 @@ const getUserDetails = async (req, res) =>{
     }catch(error){
         res.status(500).send("Unable to retrieve details of the user");
     }
-
 }
 
 const postUserDetails = async (req, res) =>{
@@ -72,17 +70,13 @@ const postUserDetails = async (req, res) =>{
     }catch(error){
         res.status(500).send("Unable to update details of the user");
     }
-
 }
 
 const deleteBooking = async (req,res) =>{
-    console.log("called delete")
     try{
-        console.log(req.params.id);
         const deleteItem = await knex ("booking")
             .where({"id" : req.params.id})
             .delete();
-
             if (deleteItem === 0) {
                 return res.status(404).json({
                   message: `Booking not found`,
@@ -96,11 +90,7 @@ const deleteBooking = async (req,res) =>{
 
 const viewBooking = async (req, res) => {
     try {
-        console.log("viewbooking")
         const booking = await knex("booking")
-            // .join("services", "services.id", "booking.service_id")
-            // .join("providers", "providers.id", "booking.provider_id")
-            // .select("booking.id","booking.booked_on","booking.status","services.service_name","providers.provider_name")
             .where({"booking.id" : req.params.bookingId});
 
             res.json(booking);
