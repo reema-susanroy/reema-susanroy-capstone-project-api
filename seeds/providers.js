@@ -17,7 +17,7 @@ exports.seed = async function (knex) {
             contact_email: 'john@gmail.com',
             rating: 4.5,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-4.jpg',
             pricing: {
                 'Plumbing Repair': '$100 per hour',
                 'Fixture Installation': '$150 per fixture',
@@ -40,7 +40,7 @@ exports.seed = async function (knex) {
             contact_email: 'jane@gmail.com',
             rating: 4.2,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-2.jpg',
             pricing: {
                 'Electrical Repair': '$90 per hour',
                 'Wiring Installation': '$120 per fixture',
@@ -109,7 +109,7 @@ exports.seed = async function (knex) {
             contact_email: 'william@gmail.com',
             rating: 4.3,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-2.jpg',
             pricing: {
                 'Garden Design': '$100 per hour',
                 'Tree Trimming': '$80 per hour',
@@ -155,7 +155,7 @@ exports.seed = async function (knex) {
             contact_email: 'james@gmail.com',
             rating: 4.4,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-3.jpg',
             pricing: {
                 'Plumbing Repair': '$100 per hour',
                 'Fixture Installation': '$150 per fixture',
@@ -178,7 +178,7 @@ exports.seed = async function (knex) {
             contact_email: 'olivia@gmail.com',
             rating: 4.1,
             availability: "yes",
-            provider_image: '/images/providers/face-women-2.jpg',
+            provider_image: '/images/providers/face-women-3.jpg',
             pricing: {
                 'Electrical Repair': '$90 per hour',
                 'Wiring Installation': '$120 per fixture',
@@ -201,7 +201,7 @@ exports.seed = async function (knex) {
             contact_email: 'benjamin@gmail.com',
             rating: 4.7,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-4.jpg',
             pricing: {
                 'Deep Cleaning': '$50 per hour',
                 'House Cleaning': '$30 per hour',
@@ -224,7 +224,7 @@ exports.seed = async function (knex) {
             contact_email: 'sophia@gmail.com',
             rating: 4.5,
             availability: "yes",
-            provider_image: '/images/providers/face-women-2.jpg',
+            provider_image: '/images/providers/face-women-4.jpg',
             pricing: {
                 'Plumbing Repair': '$100 per hour',
                 'Fixture Installation': '$150 per fixture',
@@ -293,7 +293,7 @@ exports.seed = async function (knex) {
             contact_email: 'mason@gmail.com',
             rating: 4.6,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-2.jpg',
             pricing: {
                 'HVAC Repair': '$120 per hour',
                 'Air Duct Cleaning': '$120 flat fee',
@@ -316,7 +316,7 @@ exports.seed = async function (knex) {
             contact_email: 'ava@gmail.com',
             rating: 4.3,
             availability: "yes",
-            provider_image: '/images/providers/face-women-2.jpg',
+            provider_image: '/images/providers/face-women-3.jpg',
             pricing: {
                 'Garden Design': '$100 per hour',
                 'Tree Trimming': '$80 per hour',
@@ -339,7 +339,7 @@ exports.seed = async function (knex) {
             contact_email: 'lucas@gmail.com',
             rating: 4.9,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-4.jpg',
             pricing: {
                 'Garden Design': '$100 per hour',
                 'Tree Trimming': '$80 per hour',
@@ -362,7 +362,7 @@ exports.seed = async function (knex) {
             contact_email: 'alex@gmail.com',
             rating: 4.8,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-3.jpg',
             pricing: {
                 'Roof Installation': '$2000 per square',
                 'Roof Repair': '$150 per hour',
@@ -406,7 +406,7 @@ exports.seed = async function (knex) {
             contact_email: 'coqroof@example.com',
             rating: 4.7,
             availability: "yes",
-            provider_image: '/images/providers/face-women-1.jpg',
+            provider_image: '/images/providers/face-women-4.jpg',
             pricing: {
                 'Roof Installation': '$2000 per square',
                 'Roof Repair': '$150 per hour',
@@ -428,7 +428,7 @@ exports.seed = async function (knex) {
             contact_email: 'burnabycarpentry@example.com',
             rating: 4.6,
             availability: "yes",
-            provider_image: '/images/providers/face-women-1.jpg',
+            provider_image: '/images/providers/face-women-3.jpg',
             pricing: {
                 'Custom Furniture': '$130 per hour',
                 'Cabinet Installation': '$190 per fixture',
@@ -472,7 +472,7 @@ exports.seed = async function (knex) {
             contact_email: 'rema@gmail.com',
             rating: 4.3,
             availability: "yes",
-            provider_image: '/images/providers/face-women-2.jpg',
+            provider_image: '/images/providers/face-women-4.jpg',
             pricing: {
                 'Garden Design': '$100 per hour',
                 'Tree Trimming': '$80 per hour',
@@ -495,7 +495,7 @@ exports.seed = async function (knex) {
             contact_email: 'nobel@gmail.com',
             rating: 4.3,
             availability: "yes",
-            provider_image: '/images/providers/face-man-1.jpg',
+            provider_image: '/images/providers/face-man-3.jpg',
             pricing: {
                 'Garden Design': '$100 per hour',
                 'Tree Trimming': '$80 per hour',
