@@ -11,7 +11,7 @@ exports.seed = async function (knex) {
       service_name: 'Plumbing', 
       service_description: 'Plumbing involves the installation, repair, and maintenance of pipes, fixtures, and fittings for water supply and drainage systems in residential and commercial buildings. It encompasses tasks such as pipe repair, fixture installation, drain cleaning, and water heater repair.', 
       service_need: 'Plumbing tasks are typically done by licensed plumbers who use specialized tools and equipment. The process involves assessing the plumbing system, identifying issues, and performing necessary repairs or installations.',
-      service_image: 'public/images/image0.jpg', 
+      service_image: 'images/image0.jpg', 
       service_provided: JSON.stringify(['Pipe repair', 'Fixture installation', 'Drain cleaning', 'Water heater repair']) 
     },
     
